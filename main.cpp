@@ -1,6 +1,7 @@
 #include <iostream>
 #include <SDL.h>
 #include <GL/gl.h>
+#include <GL/glu.h>
 #include <cstdlib>
 
 int main()
@@ -34,6 +35,14 @@ int main()
     SDL_GL_MakeCurrent(window,glContext);
     glClearColor(1.0,1.0,1.0,1.0);
     glClear(GL_COLOR_BUFFER_BIT);
+    glMatrixMode(GL_PROJECTION);
+    gluPerspective(45.0f,(float)screenSize.w/screenSize.h,
+                   0.5,100
+                   );
+
+    glMatrixMode(GL_MODELVIEW);
+    gluLookAt(2,2,2,0,0,0,0,1,0);
+
     SDL_GL_SwapWindow(window);
 
 
